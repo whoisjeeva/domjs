@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>domjs</title>
+</head>
+<body>
+    <button dom:onclick="${ alert('hello, world') }${ hello('hi') }" dom:text="${ confirm() }">Click me!</button>
+
+    <script src="dist/dom.min.js"></script>
+
+    <script>
+        let model = {
+            name: "John",
+            hello: function(message) {
+                console.log(message)
+                console.log(this)
+            }
+        }
+
+        $("body").bind(model)
+    </script>
+</body>
+</html>
