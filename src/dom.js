@@ -1,6 +1,7 @@
 import { Stack } from "./core/stack"
 import { Extension } from "./core/extension"
 import { Template } from "./core/template"
+import { request } from "./core/request"
 
 import { getElementStyle } from "./util/get_element_style"
 
@@ -47,6 +48,11 @@ class DOM extends Array {
             this.forEach(el => el.appendChild(html[0]))
         }
         return this
+    }
+
+    appendTo(selector) {
+        let el = new DOM(selector)
+        el.append(this)
     }
 
     prepend(html) {
@@ -282,6 +288,13 @@ class DOM extends Array {
         return this
     }
 
+    submit() {
+        if (this.length > 0) {
+            this[0].submit()
+        }
+        return this
+    }
+
     height(value) {
         if (value === undefined) {
             return this[0].offsetHeight
@@ -380,6 +393,7 @@ window._ = Extension.prototype
 window.$ = selector => {
     return new DOM(selector)
 }
+window.$.__proto__.request = request
 
 window.Template = Template
 

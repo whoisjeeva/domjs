@@ -7,20 +7,13 @@
     <title>domjs</title>
 </head>
 <body>
-    <button dom:onclick="${ alert('hello, world') }${ hello('hi') }" dom:text="${ confirm() }">Click me!</button>
+    <button>Click me!</button>
 
     <script src="dist/dom.min.js"></script>
-
     <script>
-        let model = {
-            name: "John",
-            hello: function(message) {
-                console.log(message)
-                console.log(this)
-            }
-        }
-
-        $("body").bind(model)
+        $("button").on("click", function() {
+            $("<p>hello, world</p>").appendTo(document.body)
+        })
     </script>
 </body>
 </html>
