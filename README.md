@@ -24,3 +24,14 @@ I am trying to implement a templating feature in this project. I can bind a mode
     $("body").bind(model)
 </script>
 ```
+
+
+sending a simple AJAX request
+
+```js
+$.request("http://httpbin.org/ip")
+    .onLoad(xhr => {
+        console.log(xhr)
+    })
+    .send("GET")
+```
